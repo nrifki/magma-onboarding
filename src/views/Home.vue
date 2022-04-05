@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="min-h-screen bg-gray-50 flex items-center">
+    <WelcomeScreen v-if="onboarding" />
+    <LaunchIcon v-else />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+
+import LaunchIcon from "@/components/dashboard/LaunchIcon.vue";
+import WelcomeScreen from "@/components/modals/WelcomeScreen.vue";
 
 @Options({
   components: {
-    HelloWorld,
+    LaunchIcon,
+    WelcomeScreen,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  // --> DATA <--
+
+  newUser = true;
+
+  // --> COMPUTED <--
+
+  get onboarding(): boolean {
+    if (this.newUser) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 </script>
