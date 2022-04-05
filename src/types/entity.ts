@@ -1,8 +1,9 @@
 /**************************************************************************
- * TYPES > ORGANIZATION
+ * TYPES > ENTITY
  **************************************************************************/
 
-export default interface Organization {
+export default interface Entity {
+  admins: number[];
   description: string;
   logo: File | null;
   name: string;

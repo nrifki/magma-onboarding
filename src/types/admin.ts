@@ -1,9 +1,9 @@
 /**************************************************************************
- * TYPES > ORGANIZATION
+ * TYPES > ADMIN
  **************************************************************************/
 
-export default interface Organization {
-  description: string;
-  logo: File | null;
-  name: string;
+export default interface Admin {
+  firstName: string;
+  lastName: string;
+  email: string;
 }
