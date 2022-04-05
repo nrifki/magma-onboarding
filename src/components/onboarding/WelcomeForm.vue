@@ -7,25 +7,31 @@
     <!-- STEP 1 : ORGANIZATION -->
 
     <div v-if="view === 'organization'">
-      <Input
+      <FormKit
         v-model="organization.name"
         label="Your organization name"
         name="name"
+        placeholder="Harvard University"
+        type="text"
+        validation="required"
       />
 
-      <TextField
+      <FormKit
         v-model="organization.description"
         label="Your organization description"
         name="description"
+        type="text"
       />
 
-      <File
+      <FormKit
         v-model="organization.logo"
+        accept=".png,.jpg,.svg"
         label="Your organization logo"
         name="logo"
+        type="file"
       />
 
-      <Button class="max-w-none" label="Submit" @click="onCreateOrganization" />
+      <FormKit type="button" label="Submit" @click="onCreateOrganization" />
     </div>
 
     <!-- STEP 1 : ADMINS -->
@@ -36,35 +42,49 @@
           v-for="(admin, adminIndex) in organization.admins"
           :key="adminIndex"
         >
-          <Input
+          <FormKit
             v-model="admin.firstName"
             label="First name"
             name="firstName"
+            type="text"
           />
 
-          <Input v-model="admin.lastName" label="Last name" name="lastName" />
+          <FormKit
+            v-model="admin.lastName"
+            label="Last name"
+            name="lastName"
+            type="text"
+          />
 
-          <Email v-model="admin.email" label="Email" name="email" />
+          <FormKit
+            v-model="admin.email"
+            label="Email"
+            name="email"
+            type="email"
+            validation="required|email"
+          />
         </template>
 
-        <Button label="Add more admins" @click="onAddAdmin" />
+        <FormKit label="Add more admins" type="button" @click="onAddAdmin" />
 
-        <Button label="Submit" @click="onListAdmins" />
+        <FormKit label="Submit" type="button" @click="onListAdmins" />
       </FormKit>
     </div>
 
     <!-- STEP 3 : ENTITIES -->
 
     <div v-if="view === 'entities'">
-      <Button
+      <FormKit
         help="Are there different entities in your organization?"
         label="Create entities"
+        type="button"
         @click="onCreateEntity"
       />
 
-      <Button
+      <FormKit
         help="Your organization does not have different entities?"
         label="Configure and access your dashboard"
+        type="button"
       />
 
       <FormKit v-if="organization.entities.length" type="list">
@@ -72,20 +92,36 @@
           v-for="(entity, entityIndex) in organization.entities"
           :key="entityIndex"
         >
-          <Input v-model="entity.name" label="The entity's name" name="name" />
+          <FormKit
+            v-model="entity.name"
+            label="The entity's name"
+            name="name"
+            type="text"
+          />
 
-          <TextField
+          <FormKit
             v-model="entity.description"
             label="The entity's description"
             name="description"
+            type="text"
           />
 
-          <File v-model="entity.logo" label="The entity's logo" name="logo" />
+          <FormKit
+            v-model="entity.logo"
+            accept=".png,.jpg,.svg"
+            label="The entity's logo"
+            name="logo"
+            type="file"
+          />
         </template>
 
-        <Button label="Create more entities" @click="onAddEntity" />
+        <FormKit
+          label="Create more entities"
+          type="button"
+          @click="onAddEntity"
+        />
 
-        <Button label="Submit" @click="onCreateEntities" />
+        <FormKit label="Submit" type="button" @click="onCreateEntities" />
       </FormKit>
     </div>
   </div>
@@ -97,27 +133,11 @@
 
 <script lang="ts">
 // NPM
-import { Options, Vue } from "vue-class-component";
-
-// Components
-import Button from "@/components/shell/Button.vue";
-import Email from "@/components/form/Email.vue";
-import File from "@/components/form/File.vue";
-import Input from "@/components/form/Input.vue";
-import TextField from "@/components/form/TextField.vue";
+import { Vue } from "vue-class-component";
 
 // Types
 import Organization from "@/types/organization";
 
-@Options({
-  components: {
-    Button,
-    Email,
-    File,
-    Input,
-    TextField,
-  },
-})
 export default class WelcomeForm extends Vue {
   // --> DATA <--
 

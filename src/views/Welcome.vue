@@ -91,7 +91,7 @@ export default class Welcome extends Vue {
      STYLE
      ************************************************************************* -->
 
-<style scoped>
+<style>
 .welcome__logo {
   animation: float 3.5s ease-in-out infinite;
 }
