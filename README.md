@@ -20,7 +20,13 @@ You should be able to access the project at [http://localhost:8080](http://local
 
 ## Inpiration
 
-To craft the onboarding, I spent some time on Dribbble. I drew the process on paper and started coding when things made sense. The interface has been designed with mobile-first in mind. I wanted to do something easy-to-understand without too many components to ensure the targeted audience was not lost.
+- To craft the onboarding, I spent some time on Dribbble.
+
+- I drew the process on paper and started coding when things made sense.
+
+- The interface has been designed with mobile-first in mind.
+
+- I also wanted to do something easy-to-understand without too much noise to ensure the targeted audience is not lost.
 
 ## About the app
 
