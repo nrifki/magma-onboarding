@@ -1,5 +1,16 @@
+/**************************************************************************
+ * IMPORTS
+ **************************************************************************/
+
+// NPM
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+
+// Views
 import Home from "../views/Home.vue";
+
+/**************************************************************************
+ * ROUTER > CONFIGURATION
+ **************************************************************************/
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,9 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   },
 ];
 
-const router = createRouter({
+export default createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
-export default router;

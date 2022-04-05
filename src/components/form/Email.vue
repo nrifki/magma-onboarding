@@ -1,3 +1,7 @@
+<!-- *************************************************************************
+     TEMPLATE
+     ************************************************************************* -->
+
 <template>
   <FormKit
     class="Email"
@@ -9,6 +13,10 @@
   />
 </template>
 
+<!-- *************************************************************************
+     SCRIPT
+     ************************************************************************* -->
+
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
@@ -19,8 +27,3 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Email extends Vue {}
 </script>
-
-<style scoped>
-.Email {
-}
-</style>

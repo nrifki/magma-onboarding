@@ -1,3 +1,7 @@
+<!-- *************************************************************************
+     TEMPLATE
+     ************************************************************************* -->
+
 <template>
   <div
     class="welcome-screen mx-auto flex max-w-screen-sm flex-col items-center justify-center"
@@ -22,6 +26,10 @@
   </div>
 </template>
 
+<!-- *************************************************************************
+     SCRIPT
+     ************************************************************************* -->
+
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import BasicInfos from "@/components/onboarding/BasicInfos.vue";
@@ -33,6 +41,10 @@ import BasicInfos from "@/components/onboarding/BasicInfos.vue";
 })
 export default class WelcomeScreen extends Vue {}
 </script>
+
+<!-- *************************************************************************
+     STYLE
+     ************************************************************************* -->
 
 <style scoped>
 .welcome-screen__logo {

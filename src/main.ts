@@ -1,3 +1,7 @@
+/**************************************************************************
+ * IMPORTS
+ **************************************************************************/
+
 // NPM
 import { createApp } from "vue";
 import { createI18n } from "vue-i18n";
@@ -18,13 +22,15 @@ import "@/styles/app.css";
 // Miscellaneous
 import "./registerServiceWorker";
 
-const i18n = createI18n();
+/**************************************************************************
+ * VUE > CONFIGURATION
+ **************************************************************************/
 
 const app = createApp(App);
 
-app.use(store);
-app.use(createMetaManager());
 app.use(router);
+app.use(store);
+app.use(createI18n());
+app.use(createMetaManager());
 app.use(plugin, defaultConfig);
-app.use(i18n);
 app.mount("#app");

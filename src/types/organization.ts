@@ -1,4 +1,8 @@
-interface Organization {
+/**************************************************************************
+ * TYPES > ORGANIZATION
+ **************************************************************************/
+
+export default interface Organization {
   name: string;
   description: string;
   logo: File | null;
@@ -14,5 +18,3 @@ interface Organization {
     admins: string[];
   }[];
 }
-
-export default Organization;
