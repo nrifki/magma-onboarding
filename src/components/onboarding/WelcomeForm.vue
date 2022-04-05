@@ -56,23 +56,23 @@
 
         <FormKit type="form" @submit="onSubmitAdmins">
           <div v-for="(admin, adminIndex) in admins" :key="adminIndex">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <FormKit
-                v-model="admin.firstName"
-                label="First name"
-                placeholder="Neil"
-                type="text"
-                validation="required|length:0,80"
-              />
+            <base-divider v-if="adminIndex !== 0" class="mt-6 mb-5" />
 
-              <FormKit
-                v-model="admin.lastName"
-                label="Last name"
-                placeholder="deGrasse Tyson"
-                type="text"
-                validation="required|length:0,80"
-              />
-            </div>
+            <FormKit
+              v-model="admin.firstName"
+              label="First name"
+              placeholder="Neil"
+              type="text"
+              validation="required|length:0,80"
+            />
+
+            <FormKit
+              v-model="admin.lastName"
+              label="Last name"
+              placeholder="deGrasse Tyson"
+              type="text"
+              validation="required|length:0,80"
+            />
 
             <FormKit
               v-model="admin.email"
@@ -83,12 +83,11 @@
             />
           </div>
 
-          <!-- <FormKit
-          help="Click here if you want to add a coworker to your organization."
-          label="Add another admin"
-          type="button"
-          @click="onAddAdmin"
-        /> -->
+          <FormKit
+            label="Add another admin"
+            type="button"
+            @click="onAddAdmin"
+          />
         </FormKit>
       </base-box>
 
@@ -119,6 +118,8 @@
             v-for="(entity, entityIndex) in entities"
             :key="entityIndex"
           >
+            <base-divider v-if="entityIndex !== 0" class="mt-6 mb-5" />
+
             <FormKit
               v-model="entity.name"
               label="The entity's name"
@@ -170,6 +171,7 @@ import { Options, Vue } from "vue-class-component";
 
 // Components
 import BaseBox from "@/components/base/BaseBox.vue";
+import BaseDivider from "@/components/base/BaseDivider.vue";
 
 // Types
 import Admin from "@/types/admin";
@@ -179,6 +181,7 @@ import Organization from "@/types/organization";
 @Options({
   components: {
     BaseBox,
+    BaseDivider,
   },
 })
 export default class WelcomeForm extends Vue {
