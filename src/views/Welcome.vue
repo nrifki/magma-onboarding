@@ -22,7 +22,7 @@
 
       <p class="mt-4 max-w-md font-medium">Let's setup your dashboard!</p>
 
-      <BasicInfos />
+      <WelcomeForm />
     </div>
 
     <!-- <LaunchIcon v-else /> -->
@@ -40,12 +40,12 @@ import { setup, Options, Vue } from "vue-class-component";
 import { useMeta } from "vue-meta";
 
 // Components
-import BasicInfos from "@/components/onboarding/BasicInfos.vue";
+import WelcomeForm from "@/components/onboarding/WelcomeForm.vue";
 import LaunchIcon from "@/components/dashboard/LaunchIcon.vue";
 
 @Options({
   components: {
-    BasicInfos,
+    WelcomeForm,
     LaunchIcon,
   },
 })

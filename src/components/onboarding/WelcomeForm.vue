@@ -30,7 +30,7 @@
 
     <!-- STEP 1 : ADMINS -->
 
-    <div v-if="view === 'admins'" class="BasicInfos__admins">
+    <div v-if="view === 'admins'">
       <FormKit type="list">
         <template
           v-for="(admin, adminIndex) in organization.admins"
@@ -55,7 +55,7 @@
 
     <!-- STEP 3 : ENTITIES -->
 
-    <div v-if="view === 'entities'" cclass="BasicInfos__entities">
+    <div v-if="view === 'entities'">
       <Button
         help="Are there different entities in your organization?"
         label="Create entities"
@@ -115,7 +115,7 @@ import TextField from "@/components/form/TextField.vue";
     TextField,
   },
 })
-export default class BasicInfos extends Vue {
+export default class WelcomeForm extends Vue {
   // --> DATA <--
 
   organization: Organization = {
