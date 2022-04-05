@@ -55,41 +55,43 @@
         </p>
 
         <FormKit type="form" @submit="onSubmitAdmins">
-          <div v-for="(admin, adminIndex) in admins" :key="adminIndex">
-            <base-divider v-if="adminIndex !== 0" class="mt-6 mb-5" />
+          <transition-group enter-active-class="fadeIn" tag="div">
+            <div v-for="(admin, adminIndex) in admins" :key="adminIndex">
+              <base-divider v-if="adminIndex !== 0" class="mt-6 mb-5" />
 
-            <FormKit
-              v-model="admin.firstName"
-              label="First name"
-              placeholder="Neil"
-              type="text"
-              validation="required|length:0,80"
-            />
+              <FormKit
+                v-model="admin.firstName"
+                label="First name"
+                placeholder="Neil"
+                type="text"
+                validation="required|length:0,80"
+              />
 
-            <FormKit
-              v-model="admin.lastName"
-              label="Last name"
-              placeholder="deGrasse Tyson"
-              type="text"
-              validation="required|length:0,80"
-            />
+              <FormKit
+                v-model="admin.lastName"
+                label="Last name"
+                placeholder="deGrasse Tyson"
+                type="text"
+                validation="required|length:0,80"
+              />
 
-            <FormKit
-              v-model="admin.email"
-              label="Email address"
-              placeholder="neil.degrasse@harvard.edu"
-              type="email"
-              validation="required|email"
-            />
+              <FormKit
+                v-model="admin.email"
+                label="Email address"
+                placeholder="neil.degrasse@harvard.edu"
+                type="email"
+                validation="required|email"
+              />
 
-            <BaseButton
-              v-if="admins.length > 1 && adminIndex !== admins.length - 1"
-              color="red"
-              @click="onRemoveAdmin(adminIndex)"
-            >
-              Remove admin
-            </BaseButton>
-          </div>
+              <BaseButton
+                v-if="admins.length > 1 && adminIndex !== admins.length - 1"
+                color="red"
+                @click="onRemoveAdmin(adminIndex)"
+              >
+                Remove admin
+              </BaseButton>
+            </div>
+          </transition-group>
 
           <BaseButton class="mb-4 self-end" @click="onAddAdmin">
             Add another admin
@@ -104,57 +106,61 @@
           Are there different entities in your organization?
         </p>
 
-        <FormKit type="form" @submit="onSubmitEntities">
-          <div v-if="!entities.length">
-            <FormKit
-              help="Are there different entities in your organization?"
-              label="Create entities"
-              type="button"
-              @click="onCreateEntity"
-            />
+        <div v-if="!entities.length">
+          <BaseOption @click="onCreateEntity" class="mb-3">
+            Yes, create an entity
+          </BaseOption>
 
-            <FormKit
-              help="Your organization does not have different entities?"
-              label="Configure and access your dashboard"
-              type="button"
-            />
-          </div>
+          <BaseOption @click="onShowDashboard">
+            No, bring me to the dashboard
+          </BaseOption>
+        </div>
 
-          <template
-            v-for="(entity, entityIndex) in entities"
-            :key="entityIndex"
-          >
-            <base-divider v-if="entityIndex !== 0" class="mt-6 mb-5" />
+        <FormKit v-else type="form" @submit="onSubmitEntities">
+          <transition-group enter-active-class="fadeIn" tag="div">
+            <div v-for="(entity, entityIndex) in entities" :key="entityIndex">
+              <base-divider v-if="entityIndex !== 0" class="mt-6 mb-5" />
 
-            <FormKit
-              v-model="entity.name"
-              label="The entity's name"
-              placeholder="Harvard Medical School"
-              type="text"
-              validation="required|length:0,80"
-            />
+              <FormKit
+                v-model="entity.name"
+                label="The entity's name"
+                placeholder="Harvard Medical School"
+                type="text"
+                validation="required|length:0,80"
+              />
 
-            <FormKit
-              v-model="entity.description"
-              :help="`${entity.description.length} / 120`"
-              :validation-messages="{
-                length: 'The description cannot be more than 120 characters.',
-              }"
-              label="The entity's description"
-              placeholder="Harvard Medical School (HMS) is the graduate medical school of Harvard University and is located in the Longwood Medical Area of Boston, Massachusetts."
-              type="textarea"
-              validation="length:0,120"
-              validation-visibility="live"
-            />
+              <FormKit
+                v-model="entity.description"
+                :help="`${entity.description.length} / 120`"
+                :validation-messages="{
+                  length: 'The description cannot be more than 120 characters.',
+                }"
+                label="The entity's description"
+                placeholder="Harvard Medical School (HMS) is the graduate medical school of Harvard University and is located in the Longwood Medical Area of Boston, Massachusetts."
+                type="textarea"
+                validation="length:0,120"
+                validation-visibility="live"
+              />
 
-            <FormKit
-              v-model="entity.logo"
-              accept=".png,.jpg,.svg"
-              label="The entity's logo"
-              name="logo"
-              type="file"
-            />
-          </template>
+              <FormKit
+                v-model="entity.logo"
+                accept=".png,.jpg,.svg"
+                label="The entity's logo"
+                name="logo"
+                type="file"
+              />
+
+              <BaseButton
+                v-if="
+                  entities.length > 1 && entityIndex !== entities.length - 1
+                "
+                color="red"
+                @click="onRemoveEntity(entityIndex)"
+              >
+                Remove entity
+              </BaseButton>
+            </div>
+          </transition-group>
 
           <BaseButton @click="onAddEntity" class="mb-4">
             Create more entities
@@ -176,6 +182,7 @@ import { Options, Vue } from "vue-class-component";
 // Components
 import BaseBox from "@/components/base/BaseBox.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
+import BaseOption from "@/components/base/BaseOption.vue";
 import BaseDivider from "@/components/base/BaseDivider.vue";
 
 // Types
@@ -187,6 +194,7 @@ import Organization from "@/types/organization";
   components: {
     BaseBox,
     BaseButton,
+    BaseOption,
     BaseDivider,
   },
 })
@@ -203,7 +211,7 @@ export default class WelcomeForm extends Vue {
     name: "",
   };
 
-  view = "admins";
+  view = "organization";
 
   // --> METHODS : HELPERS <--
 
@@ -240,6 +248,14 @@ export default class WelcomeForm extends Vue {
 
   onRemoveAdmin(adminIndex: number): void {
     this.admins.splice(adminIndex, 1);
+  }
+
+  onRemoveEntity(entityIndex: number): void {
+    this.entities.splice(entityIndex, 1);
+  }
+
+  onShowDashboard(): void {
+    this.$emit("completed");
   }
 
   onSubmitAdmins(): void {
