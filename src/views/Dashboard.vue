@@ -10,6 +10,8 @@
 
     <h1 class="mt-4 text-xl font-black uppercase text-green-900">MAGMA</h1>
 
+    <p class="mt-2 max-w-md">You have made it!</p>
+
     <div class="mx-auto w-10">
       <ConfettiExplosion :duration="3000" :force="0.3" :particleCount="200" />
     </div>
