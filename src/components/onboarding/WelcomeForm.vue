@@ -96,15 +96,18 @@
      ************************************************************************* -->
 
 <script lang="ts">
+// NPM
 import { Options, Vue } from "vue-class-component";
 
-import Organization from "@/types/organization";
-
+// Components
 import Button from "@/components/shell/Button.vue";
 import Email from "@/components/form/Email.vue";
 import File from "@/components/form/File.vue";
 import Input from "@/components/form/Input.vue";
 import TextField from "@/components/form/TextField.vue";
+
+// Types
+import Organization from "@/types/organization";
 
 @Options({
   components: {

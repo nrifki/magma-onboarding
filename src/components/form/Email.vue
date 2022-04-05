@@ -18,12 +18,11 @@
      ************************************************************************* -->
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// NPM
+import { Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
 
-@Options({
-  props: {
-    label: String,
-  },
-})
-export default class Email extends Vue {}
+export default class Email extends Vue {
+  @Prop() label!: string;
+}
 </script>

@@ -40,13 +40,13 @@ import { setup, Options, Vue } from "vue-class-component";
 import { useMeta } from "vue-meta";
 
 // Components
-import WelcomeForm from "@/components/onboarding/WelcomeForm.vue";
 import LaunchIcon from "@/components/dashboard/LaunchIcon.vue";
+import WelcomeForm from "@/components/onboarding/WelcomeForm.vue";
 
 @Options({
   components: {
-    WelcomeForm,
     LaunchIcon,
+    WelcomeForm,
   },
 })
 export default class Welcome extends Vue {

@@ -3,7 +3,7 @@
      ************************************************************************* -->
 
 <template>
-  <FormKit type="button" :help="help" :label="label" />
+  <FormKit :help="help" :label="label" type="button" />
 </template>
 
 <!-- *************************************************************************
@@ -11,13 +11,12 @@
      ************************************************************************* -->
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// NPM
+import { Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
 
-@Options({
-  props: {
-    help: String,
-    label: String,
-  },
-})
-export default class Button extends Vue {}
+export default class Button extends Vue {
+  @Prop() help?: string;
+  @Prop() label!: string;
+}
 </script>

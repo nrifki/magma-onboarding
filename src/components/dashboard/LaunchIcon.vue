@@ -21,8 +21,8 @@
      ************************************************************************* -->
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// NPM
+import { Vue } from "vue-class-component";
 
-@Options({})
 export default class LaunchIcon extends Vue {}
 </script>
