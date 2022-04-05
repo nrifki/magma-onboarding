@@ -25,6 +25,6 @@ import { Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
 export default class BaseButton extends Vue {
-  @Prop({ default: "black" }) readonly color!: "black" | "red";
+  @Prop({ default: "black" }) color!: "black" | "red";
 }
 </script>
