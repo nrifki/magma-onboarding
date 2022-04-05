@@ -19,11 +19,8 @@ import App from "./App.vue";
 import "@formkit/themes/dist/genesis/theme.css";
 import "@/styles/app.css";
 
-// Miscellaneous
-import "./registerServiceWorker";
-
 /**************************************************************************
- * VUE > CONFIGURATION
+ * APP > CONFIGURATION
  **************************************************************************/
 
 const app = createApp(App);
