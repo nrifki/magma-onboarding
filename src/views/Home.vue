@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 flex items-center">
+  <div class="flex min-h-screen items-center bg-gray-50">
     <WelcomeScreen v-if="onboarding" />
     <LaunchIcon v-else />
   </div>

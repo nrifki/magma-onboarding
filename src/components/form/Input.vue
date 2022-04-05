@@ -12,8 +12,3 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Input extends Vue {}
 </script>
-
-<style scoped>
-.Input {
-}
-</style>

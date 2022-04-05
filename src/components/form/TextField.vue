@@ -12,8 +12,3 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class TextField extends Vue {}
 </script>
-
-<style scoped>
-.TextField {
-}
-</style>
