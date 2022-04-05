@@ -42,6 +42,8 @@ To craft the onboarding, I spent some time on Dribbble. I drew the process on pa
 
 - I did not touch the eslint configuration and directly used the one with Vue-CLI.
 
+- I also follow the angular convention when I write the message for my commits.
+
 ## To go further.
 
 - End-to-end tests have been set up using Cypress. I can implement them. This will make sure the onboarding is never broken.
