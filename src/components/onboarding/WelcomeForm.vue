@@ -81,13 +81,19 @@
               type="email"
               validation="required|email"
             />
+
+            <BaseButton
+              v-if="admins.length > 1 && adminIndex !== admins.length - 1"
+              color="red"
+              @click="onRemoveAdmin(adminIndex)"
+            >
+              Remove admin
+            </BaseButton>
           </div>
 
-          <FormKit
-            label="Add another admin"
-            type="button"
-            @click="onAddAdmin"
-          />
+          <BaseButton class="mb-4 self-end" @click="onAddAdmin">
+            Add another admin
+          </BaseButton>
         </FormKit>
       </base-box>
 
@@ -150,11 +156,9 @@
             />
           </template>
 
-          <!-- <FormKit
-          label="Create more entities"
-          type="button"
-          @click="onAddEntity"
-        /> -->
+          <BaseButton @click="onAddEntity" class="mb-4">
+            Create more entities
+          </BaseButton>
         </FormKit>
       </base-box>
     </transition>
@@ -171,6 +175,7 @@ import { Options, Vue } from "vue-class-component";
 
 // Components
 import BaseBox from "@/components/base/BaseBox.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
 import BaseDivider from "@/components/base/BaseDivider.vue";
 
 // Types
@@ -181,6 +186,7 @@ import Organization from "@/types/organization";
 @Options({
   components: {
     BaseBox,
+    BaseButton,
     BaseDivider,
   },
 })
@@ -188,6 +194,7 @@ export default class WelcomeForm extends Vue {
   // --> DATA <--
 
   admins: Admin[] = [];
+
   entities: Entity[] = [];
 
   organization: Organization = {
@@ -196,7 +203,7 @@ export default class WelcomeForm extends Vue {
     name: "",
   };
 
-  view = "organization";
+  view = "admins";
 
   // --> METHODS : HELPERS <--
 
@@ -227,12 +234,16 @@ export default class WelcomeForm extends Vue {
     this.generateEntity();
   }
 
-  onSubmitAdmins(): void {
-    this.view = "entities";
-  }
-
   onCreateEntity(): void {
     this.generateEntity();
+  }
+
+  onRemoveAdmin(adminIndex: number): void {
+    this.admins.splice(adminIndex, 1);
+  }
+
+  onSubmitAdmins(): void {
+    this.view = "entities";
   }
 
   onSubmitOrganization(): void {
