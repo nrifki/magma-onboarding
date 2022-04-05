@@ -6,7 +6,7 @@
   <div
     class="dashboard mx-auto flex max-w-screen-sm flex-col items-center text-center"
   >
-    <base-logo class="mt-20" />
+    <base-logo />
 
     <h1 class="mt-4 text-xl font-black uppercase text-green-900">MAGMA</h1>
 
