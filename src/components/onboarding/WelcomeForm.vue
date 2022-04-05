@@ -13,7 +13,7 @@
 
       <base-box v-if="view === 'organization'" key="organization">
         <p class="mb-5 text-center text-sm font-bold uppercase">
-          Let's setup your dashboard!
+          Let's setup your dashboard! 👩‍💻
         </p>
 
         <FormKit type="form" @submit="onSubmitOrganization">
@@ -51,7 +51,7 @@
 
       <base-box v-else-if="view === 'admins'" key="admins">
         <p class="mb-5 text-center text-sm font-bold uppercase">
-          Add admins to your organization
+          Add admins to your organization 🏢
         </p>
 
         <FormKit type="form" @submit="onSubmitAdmins">
@@ -103,7 +103,7 @@
 
       <base-box v-else-if="view === 'entities'" key="entities">
         <p class="mb-5 text-center text-sm font-bold uppercase">
-          Are there different entities in your organization?
+          Are there different entities in your organization? 🏫
         </p>
 
         <div v-if="!entities.length">
@@ -172,7 +172,7 @@
 
       <base-box v-else-if="view === 'final'" key="final">
         <p class="mb-5 text-center text-sm font-bold uppercase">
-          You have made it!
+          You have made it! 🎉
         </p>
 
         <div class="mx-auto w-10">
