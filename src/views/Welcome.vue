@@ -30,13 +30,13 @@ import WelcomeScreen from "@/components/modals/WelcomeScreen.vue";
     WelcomeScreen,
   },
 })
-export default class Home extends Vue {
+export default class Welcome extends Vue {
   // --> METAS <--
 
   meta = setup(() =>
     useMeta(
       computed(() => ({
-        title: "Magma Onboarding",
+        title: "Welcome",
       }))
     )
   );

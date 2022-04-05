@@ -5,7 +5,7 @@
 <template>
   <metainfo>
     <template v-slot:title="{ content }">
-      {{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}
+      {{ content ? `${content} | Magma` : `Magma` }}
     </template>
   </metainfo>
 
