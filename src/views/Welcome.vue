@@ -15,7 +15,7 @@
       students.
     </p>
 
-    <WelcomeForm class="mt-6" @completed="onWelcomeFormCompleted" />
+    <WelcomeForm class="mt-6" />
   </div>
 </template>
 
@@ -64,13 +64,5 @@ export default class Welcome extends Vue {
       }))
     )
   );
-
-  // --> METHODS : EVENT LISTENERS <--
-
-  onWelcomeFormCompleted(): void {
-    this.$router.push({
-      name: "dashboard",
-    });
-  }
 }
 </script>

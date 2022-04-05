@@ -167,6 +167,28 @@
           </BaseButton>
         </FormKit>
       </base-box>
+
+      <!-- STEP 4 : FINAL -->
+
+      <base-box v-else-if="view === 'final'" key="final">
+        <p class="mb-5 text-center text-sm font-bold uppercase">
+          You have made it!
+        </p>
+
+        <div class="mx-auto w-10">
+          <ConfettiExplosion
+            :duration="3000"
+            :force="0.3"
+            :particleCount="200"
+          />
+        </div>
+
+        <pre
+          class="shadow-inside w-full rounded-xl border bg-gray-100 p-4"
+          wrap
+          >{{ payload }}</pre
+        >
+      </base-box>
     </transition>
   </div>
 </template>
@@ -184,6 +206,7 @@ import BaseBox from "@/components/base/BaseBox.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BaseOption from "@/components/base/BaseOption.vue";
 import BaseDivider from "@/components/base/BaseDivider.vue";
+import ConfettiExplosion from "vue-confetti-explosion";
 
 // Types
 import Admin from "@/types/admin";
@@ -196,6 +219,7 @@ import Organization from "@/types/organization";
     BaseButton,
     BaseOption,
     BaseDivider,
+    ConfettiExplosion,
   },
 })
 export default class WelcomeForm extends Vue {
@@ -213,6 +237,20 @@ export default class WelcomeForm extends Vue {
 
   view = "organization";
 
+  // --> COMPUTED <--
+
+  get payload(): {
+    admins: Admin[];
+    entities: Entity[];
+    organization: Organization;
+  } {
+    return {
+      admins: this.admins,
+      entities: this.entities,
+      organization: this.organization,
+    };
+  }
+
   // --> METHODS : HELPERS <--
 
   generateAdmin(): void {
@@ -228,7 +266,6 @@ export default class WelcomeForm extends Vue {
       description: "",
       logo: null,
       name: "",
-      admins: [],
     });
   }
 
@@ -255,7 +292,7 @@ export default class WelcomeForm extends Vue {
   }
 
   onShowDashboard(): void {
-    this.$emit("completed");
+    this.view = "final";
   }
 
   onSubmitAdmins(): void {
@@ -270,7 +307,7 @@ export default class WelcomeForm extends Vue {
   }
 
   onSubmitEntities(): void {
-    this.$emit("completed");
+    this.view = "final";
   }
 }
 </script>
