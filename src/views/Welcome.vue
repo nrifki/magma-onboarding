@@ -3,7 +3,7 @@
      ************************************************************************* -->
 
 <template>
-  <div class="flex min-h-screen items-center bg-gray-50">
+  <div>
     <WelcomeScreen v-if="onboarding" />
 
     <LaunchIcon v-else />
@@ -37,6 +37,21 @@ export default class Welcome extends Vue {
     useMeta(
       computed(() => ({
         title: "Welcome",
+        meta: [
+          {
+            charset: "utf-8",
+          },
+          {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1",
+          },
+          {
+            vmid: "description",
+            name: "description",
+            content:
+              "Where magic happens between your school ambassadors and your future students.",
+          },
+        ],
       }))
     )
   );

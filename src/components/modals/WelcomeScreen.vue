@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="welcome-screen mx-auto flex max-w-screen-sm flex-col items-center justify-center"
+    class="welcome-screen mx-auto flex max-w-screen-sm flex-col items-center justify-center text-center text-base"
   >
     <img
       alt="Magma logo"
@@ -14,13 +14,12 @@
 
     <h1 class="mt-8 text-xl font-bold uppercase">Welcome to Magma!</h1>
 
-    <p class="mt-4 max-w-md text-center text-base">
-      This is where you create magic between your school ambassadors and Your
-      future students.
-      <br />
-      <br />
-      Let's setup your dashboard!
+    <p class="mt-4 max-w-md">
+      Where magic happens between your school ambassadors and your future
+      students.
     </p>
+
+    <p class="mt-4 max-w-md font-medium">Let's setup your dashboard!</p>
 
     <BasicInfos />
   </div>
