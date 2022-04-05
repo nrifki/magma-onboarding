@@ -22,10 +22,8 @@
 
       <p class="mt-4 max-w-md font-medium">Let's setup your dashboard!</p>
 
-      <WelcomeForm />
+      <WelcomeForm @completed="onWelcomeFormCompleted" />
     </div>
-
-    <!-- <LaunchIcon v-else /> -->
   </div>
 </template>
 
@@ -40,26 +38,14 @@ import { setup, Options, Vue } from "vue-class-component";
 import { useMeta } from "vue-meta";
 
 // Components
-import LaunchIcon from "@/components/dashboard/LaunchIcon.vue";
 import WelcomeForm from "@/components/onboarding/WelcomeForm.vue";
 
 @Options({
   components: {
-    LaunchIcon,
     WelcomeForm,
   },
 })
 export default class Welcome extends Vue {
-  // --> DATA <--
-
-  newUser = true;
-
-  // --> COMPUTED <--
-
-  get onboarding(): boolean {
-    return !!this.newUser;
-  }
-
   // --> METAS <--
 
   meta = setup(() =>
@@ -84,6 +70,14 @@ export default class Welcome extends Vue {
       }))
     )
   );
+
+  // --> METHODS : EVENT LISTENERS <--
+
+  onWelcomeFormCompleted(): void {
+    this.$router.push({
+      name: "dashboard",
+    });
+  }
 }
 </script>
 

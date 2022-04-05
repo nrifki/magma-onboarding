@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="mx-auto flex h-64 w-64 -translate-y-1/4 transform cursor-pointer flex-col items-center justify-center rounded-lg shadow-xl"
+    class="dashboard mx-auto flex h-64 w-64 -translate-y-1/4 transform cursor-pointer flex-col items-center justify-center rounded-lg shadow-xl"
   >
     <img
       alt="Magma Logo"
@@ -22,7 +22,19 @@
 
 <script lang="ts">
 // NPM
-import { Vue } from "vue-class-component";
+import { computed } from "@vue/runtime-core";
+import { setup, Vue } from "vue-class-component";
+import { useMeta } from "vue-meta";
 
-export default class LaunchIcon extends Vue {}
+export default class LaunchIcon extends Vue {
+  // --> METAS <--
+
+  meta = setup(() =>
+    useMeta(
+      computed(() => ({
+        title: "Dashboard",
+      }))
+    )
+  );
+}
 </script>

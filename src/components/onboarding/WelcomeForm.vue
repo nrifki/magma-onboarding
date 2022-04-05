@@ -209,7 +209,7 @@ export default class WelcomeForm extends Vue {
   }
 
   onSubmitEntities(): void {
-    console.log("hey");
+    this.$emit("completed");
   }
 }
 </script>
