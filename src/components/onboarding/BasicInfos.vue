@@ -3,25 +3,32 @@
      ************************************************************************* -->
 
 <template>
-  <div class="mt-6">
+  <div class="mt-6 text-left">
+    <!-- STEP 1 : ORGANIZATION -->
+
     <div v-if="view === 'organization'">
       <Input
         v-model="organization.name"
         label="Your organization name"
         name="name"
       />
+
       <TextField
         v-model="organization.description"
         label="Your organization description"
         name="description"
       />
+
       <File
         v-model="organization.logo"
         label="Your organization logo"
         name="logo"
       />
+
       <Button class="max-w-none" label="Submit" @click="onCreateOrganization" />
     </div>
+
+    <!-- STEP 1 : ADMINS -->
 
     <div v-if="view === 'admins'" class="BasicInfos__admins">
       <FormKit type="list">
@@ -34,13 +41,19 @@
             label="First name"
             name="firstName"
           />
+
           <Input v-model="admin.lastName" label="Last name" name="lastName" />
+
           <Email v-model="admin.email" label="Email" name="email" />
         </template>
+
         <Button label="Add more admins" @click="onAddAdmin" />
+
         <Button label="Submit" @click="onListAdmins" />
       </FormKit>
     </div>
+
+    <!-- STEP 3 : ENTITIES -->
 
     <div v-if="view === 'entities'" cclass="BasicInfos__entities">
       <Button
@@ -48,24 +61,30 @@
         label="Create entities"
         @click="onCreateEntity"
       />
+
       <Button
         help="Your organization does not have different entities?"
         label="Configure and access your dashboard"
       />
+
       <FormKit v-if="organization.entities.length" type="list">
         <template
           v-for="(entity, entityIndex) in organization.entities"
           :key="entityIndex"
         >
           <Input v-model="entity.name" label="The entity's name" name="name" />
+
           <TextField
             v-model="entity.description"
             label="The entity's description"
             name="description"
           />
+
           <File v-model="entity.logo" label="The entity's logo" name="logo" />
         </template>
+
         <Button label="Create more entities" @click="onAddEntity" />
+
         <Button label="Submit" @click="onCreateEntities" />
       </FormKit>
     </div>
