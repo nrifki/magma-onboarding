@@ -3,7 +3,7 @@
      ************************************************************************* -->
 
 <template>
-  <div class="mx-auto mt-6 w-96 text-left">
+  <div class="mt-6">
     <transition
       enter-active-class="fadeInRight"
       leave-active-class="fadeOutLeft"
@@ -11,7 +11,11 @@
     >
       <!-- STEP 1 : ORGANIZATION -->
 
-      <div v-if="view === 'organization'" key="organization">
+      <base-box v-if="view === 'organization'" key="organization">
+        <p class="mb-5 text-center text-sm font-bold uppercase">
+          Let's setup your dashboard!
+        </p>
+
         <FormKit type="form" @submit="onSubmitOrganization">
           <FormKit
             v-model="organization.name"
@@ -41,11 +45,15 @@
             type="file"
           />
         </FormKit>
-      </div>
+      </base-box>
 
       <!-- STEP 2 : ADMINS -->
 
-      <div v-else-if="view === 'admins'" key="admins">
+      <base-box v-else-if="view === 'admins'" key="admins">
+        <p class="mb-5 text-center text-sm font-bold uppercase">
+          Add admins to your organization
+        </p>
+
         <FormKit type="form" @submit="onSubmitAdmins">
           <div v-for="(admin, adminIndex) in admins" :key="adminIndex">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -82,11 +90,15 @@
           @click="onAddAdmin"
         /> -->
         </FormKit>
-      </div>
+      </base-box>
 
       <!-- STEP 3 : ENTITIES -->
 
-      <div v-else-if="view === 'entities'" key="entities">
+      <base-box v-else-if="view === 'entities'" key="entities">
+        <p class="mb-5 text-center text-sm font-bold uppercase">
+          Are there different entities in your organization?
+        </p>
+
         <FormKit type="form" @submit="onSubmitEntities">
           <div v-if="!entities.length">
             <FormKit
@@ -143,7 +155,7 @@
           @click="onAddEntity"
         /> -->
         </FormKit>
-      </div>
+      </base-box>
     </transition>
   </div>
 </template>
@@ -154,13 +166,21 @@
 
 <script lang="ts">
 // NPM
-import { Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
+
+// Components
+import BaseBox from "@/components/base/BaseBox.vue";
 
 // Types
 import Admin from "@/types/admin";
 import Entity from "@/types/entity";
 import Organization from "@/types/organization";
 
+@Options({
+  components: {
+    BaseBox,
+  },
+})
 export default class WelcomeForm extends Vue {
   // --> DATA <--
 

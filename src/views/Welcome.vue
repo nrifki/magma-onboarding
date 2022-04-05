@@ -15,8 +15,6 @@
       students.
     </p>
 
-    <p class="mt-4 max-w-md font-medium">Let's setup your dashboard!</p>
-
     <WelcomeForm @completed="onWelcomeFormCompleted" />
   </div>
 </template>
