@@ -10,12 +10,12 @@
 
     <h1 class="mt-8 text-xl font-bold uppercase">Welcome to Magma!</h1>
 
-    <p class="mt-4 max-w-md">
+    <p class="mt-2 max-w-md">
       Where magic happens between your school ambassadors and your future
       students.
     </p>
 
-    <WelcomeForm @completed="onWelcomeFormCompleted" />
+    <WelcomeForm class="mt-6" @completed="onWelcomeFormCompleted" />
   </div>
 </template>
 

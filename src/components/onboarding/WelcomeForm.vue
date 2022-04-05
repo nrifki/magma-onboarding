@@ -3,7 +3,7 @@
      ************************************************************************* -->
 
 <template>
-  <div class="mt-6">
+  <div>
     <transition
       enter-active-class="fadeInRight"
       leave-active-class="fadeOutLeft"
