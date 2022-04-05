@@ -6,8 +6,12 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// NPM
+import { computed } from "@vue/runtime-core";
+import { setup, Options, Vue } from "vue-class-component";
+import { useMeta } from "vue-meta";
 
+// Components
 import LaunchIcon from "@/components/dashboard/LaunchIcon.vue";
 import WelcomeScreen from "@/components/modals/WelcomeScreen.vue";
 
@@ -18,6 +22,16 @@ import WelcomeScreen from "@/components/modals/WelcomeScreen.vue";
   },
 })
 export default class Home extends Vue {
+  // --> METAS <--
+
+  meta = setup(() =>
+    useMeta(
+      computed(() => ({
+        title: "Magma Onboarding",
+      }))
+    )
+  );
+
   // --> DATA <--
 
   newUser = true;
@@ -25,11 +39,7 @@ export default class Home extends Vue {
   // --> COMPUTED <--
 
   get onboarding(): boolean {
-    if (this.newUser) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!this.newUser;
   }
 }
 </script>
