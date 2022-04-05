@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="welcome mx-auto flex max-w-screen-sm flex-col items-center justify-center text-center"
+    class="onboarding mx-auto flex max-w-screen-sm flex-col items-center justify-center text-center"
   >
     <BaseLogo />
 
@@ -15,7 +15,7 @@
       students.
     </p>
 
-    <WelcomeForm class="mt-6" />
+    <OnboardingForm class="mt-6" />
   </div>
 </template>
 
@@ -31,15 +31,15 @@ import { useMeta } from "vue-meta";
 
 // Components
 import BaseLogo from "@/components/base/BaseLogo.vue";
-import WelcomeForm from "@/components/onboarding/WelcomeForm.vue";
+import OnboardingForm from "@/components/onboarding/OnboardingForm.vue";
 
 @Options({
   components: {
     BaseLogo,
-    WelcomeForm,
+    OnboardingForm,
   },
 })
-export default class Welcome extends Vue {
+export default class Onboarding extends Vue {
   // --> METAS <--
 
   meta = setup(() =>

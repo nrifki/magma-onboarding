@@ -222,7 +222,7 @@ import Organization from "@/types/organization";
     ConfettiExplosion,
   },
 })
-export default class WelcomeForm extends Vue {
+export default class OnboardingForm extends Vue {
   // --> DATA <--
 
   admins: Admin[] = [];
