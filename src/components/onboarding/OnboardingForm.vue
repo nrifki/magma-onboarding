@@ -190,6 +190,11 @@
         >
       </base-box>
     </transition>
+
+    <OnboardingProgression
+      :current="view"
+      :views="['organization', 'admins', 'entities', 'final']"
+    />
   </div>
 </template>
 
@@ -207,6 +212,7 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import BaseOption from "@/components/base/BaseOption.vue";
 import BaseDivider from "@/components/base/BaseDivider.vue";
 import ConfettiExplosion from "vue-confetti-explosion";
+import OnboardingProgression from "@/components/onboarding/OnboardingProgression.vue";
 
 // Types
 import Admin from "@/types/admin";
@@ -220,6 +226,7 @@ import Organization from "@/types/organization";
     BaseOption,
     BaseDivider,
     ConfettiExplosion,
+    OnboardingProgression,
   },
 })
 export default class OnboardingForm extends Vue {
