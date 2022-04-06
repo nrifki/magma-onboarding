@@ -4,11 +4,15 @@
 
 <template>
   <button
+    class="w-full"
     :class="{
-      'bg-gray-900 hover:bg-black': color === 'black',
-      'bg-red-700 hover:bg-red-900': color === 'red',
+      'rounded bg-gray-900 py-2.5 px-4 text-sm font-medium text-white hover:bg-black':
+        color === 'black',
+      'rounded-lg border bg-gray-100 p-4 text-center  shadow-inner hover:bg-gray-200':
+        color === 'grey',
+      'rounded bg-red-700 py-2.5 px-4 text-sm font-medium text-white hover:bg-red-900':
+        color === 'red',
     }"
-    class="w-full rounded py-2.5 px-4 text-sm font-medium text-white"
     type="button"
   >
     <slot />
@@ -25,6 +29,6 @@ import { Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
 export default class BaseButton extends Vue {
-  @Prop({ default: "black" }) color!: "black" | "red";
+  @Prop({ default: "black" }) color!: "black" | "grey" | "red";
 }
 </script>
