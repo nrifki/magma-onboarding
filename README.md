@@ -18,7 +18,9 @@ npm run serve
 
 You should be able to access the project at [http://localhost:8080](http://localhost:8080).
 
-## Inpiration
+## Inspiration
+
+![UX flowchart](public/img/documentation/ux_flowchart.svg)
 
 - To craft the onboarding, I spent some time on Dribbble.
 
