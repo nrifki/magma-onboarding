@@ -19,7 +19,7 @@
         <FormKit type="form" @submit="onSubmitOrganization">
           <FormKit
             v-model="organization.name"
-            label="Your organization name"
+            label="Your organization name*"
             placeholder="Harvard University"
             type="text"
             validation="required|length:0,80"
@@ -31,18 +31,19 @@
             :validation-messages="{
               length: 'The description cannot be more than 120 characters.',
             }"
-            label="Your organization description"
+            label="Your organization description*"
             placeholder="Harvard University is a private Ivy League research university in Cambridge, Massachusetts."
             type="textarea"
-            validation="length:0,120"
-            validation-visibility="live"
+            validation="required|length:0,120"
           />
 
           <FormKit
             v-model="organization.logo"
             accept=".png,.jpg,.svg"
-            label="Your organization logo"
+            help="Your logo should be in the PNG, JPG or SVG format"
+            label="Your organization logo*"
             type="file"
+            validation="required"
           />
         </FormKit>
       </base-box>
@@ -84,7 +85,8 @@
               />
 
               <BaseButton
-                v-if="admins.length > 1 && adminIndex !== admins.length - 1"
+                v-if="adminIndex !== 0"
+                class="mb-4"
                 color="red"
                 @click="onRemoveAdmin(adminIndex)"
               >
@@ -107,13 +109,13 @@
         </p>
 
         <div v-if="!entities.length">
-          <BaseOption @click="onCreateEntity" class="mb-3">
+          <BaseButton class="mb-3" color="grey" options @click="onCreateEntity">
             Yes, create an entity
-          </BaseOption>
+          </BaseButton>
 
-          <BaseOption @click="onShowDashboard">
-            No, bring me to the dashboard
-          </BaseOption>
+          <BaseButton color="grey" options @click="onShowDashboard">
+            No, take me to the dashboard
+          </BaseButton>
         </div>
 
         <FormKit v-else type="form" @submit="onSubmitEntities">
@@ -145,15 +147,23 @@
               <FormKit
                 v-model="entity.logo"
                 accept=".png,.jpg,.svg"
+                help="Your logo should be in the PNG, JPG or SVG format"
                 label="The entity's logo"
                 name="logo"
                 type="file"
               />
 
+              <FormKit
+                :options="adminsList"
+                v-model="entity.admins"
+                type="checkbox"
+                label="The entity's admins"
+                validation="required"
+              />
+
               <BaseButton
-                v-if="
-                  entities.length > 1 && entityIndex !== entities.length - 1
-                "
+                v-if="entityIndex !== 0"
+                class="mb-4"
                 color="red"
                 @click="onRemoveEntity(entityIndex)"
               >
@@ -209,7 +219,6 @@ import { Options, Vue } from "vue-class-component";
 // Components
 import BaseBox from "@/components/base/BaseBox.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import BaseOption from "@/components/base/BaseOption.vue";
 import BaseDivider from "@/components/base/BaseDivider.vue";
 import ConfettiExplosion from "vue-confetti-explosion";
 import OnboardingProgression from "@/components/onboarding/OnboardingProgression.vue";
@@ -223,7 +232,6 @@ import Organization from "@/types/organization";
   components: {
     BaseBox,
     BaseButton,
-    BaseOption,
     BaseDivider,
     ConfettiExplosion,
     OnboardingProgression,
@@ -258,6 +266,10 @@ export default class OnboardingForm extends Vue {
     };
   }
 
+  get adminsList(): string[] {
+    return this.admins.map((admin) => admin.firstName + " " + admin.lastName);
+  }
+
   // --> METHODS : HELPERS <--
 
   generateAdmin(): void {
@@ -268,12 +280,17 @@ export default class OnboardingForm extends Vue {
     });
   }
 
-  generateEntity(): void {
-    this.entities.push({
+  generateEntity(): Entity {
+    const entity: Entity = {
       description: "",
       logo: null,
       name: "",
-    });
+      admins: [],
+    };
+
+    this.entities.push(entity);
+
+    return entity;
   }
 
   // --> METHODS : EVENT LISTENERS <--
@@ -299,6 +316,13 @@ export default class OnboardingForm extends Vue {
   }
 
   onShowDashboard(): void {
+    const entity = this.generateEntity();
+
+    entity.name = this.organization.name;
+    entity.description = this.organization.description;
+    entity.logo = this.organization.logo;
+    entity.admins = this.adminsList;
+
     this.view = "final";
   }
 
@@ -314,6 +338,16 @@ export default class OnboardingForm extends Vue {
   }
 
   onSubmitEntities(): void {
+    for (const entity of this.entities) {
+      if (!entity.description) {
+        entity.description = this.organization.description;
+      }
+
+      if (!entity.logo) {
+        entity.logo = this.organization.logo;
+      }
+    }
+
     this.view = "final";
   }
 }
