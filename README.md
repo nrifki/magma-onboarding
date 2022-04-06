@@ -18,17 +18,58 @@ npm run serve
 
 You should be able to access the project at [http://localhost:8080](http://localhost:8080).
 
-## Inspiration
+## Challenge & Inspiration:
+
+### Challenge:
+
+🎯 The aim of creating an onboarding process is to allow our users to get up and running with the platform:
+
+- in a short amount of time,
+- with full autonomy.
+
+Because as we all know, the sooner he gets to experience the value of our product (preferably in an "aha" moment 😉) the more likely he will be encouraged to return and use our solution.
+
+☝🏼 However, knowing our typical user profile, we have to take into consideration his lack of speed, tech language, motor skills and even concentration.
+
+➡️ This is why our onboarding has to be sleek and simple in order to not overwhelm users (especially new users).
+
+⚠️ The next step the user has to take must be simple to spot and understand, while providing him with a vision of his progress (so he knows how long the process will take and be incetivised to complete it instead of dropping it because god knows how long will it take).
+
+And of course, let's think 📱 mobile first. Not just to have a responsive layout, but it also helps us know what is nice-to-have and what is must-have (especially when we need to stay minimalistic).
+
+### User Experience (basic information)
+
+Based on the brief I was provided I designed a flowchart that simplifies the first part of onboarding; the basic user information.
 
 ![UX flowchart](public/img/documentation/ux_flowchart.svg)
 
-- To craft the onboarding, I spent some time on Dribbble.
+1 - 🔍 We first need to detect if we're dealing with a new user.
 
-- I drew the process on paper and started coding when things made sense.
+2 - If it's a user who already has his dashboard all set up, we will show him directly to the home screen where each entity's dashboard (if many) is listed and accessible (in a minimalistic view with one entity's dashboard = one clickable box with entity's logo and name).
 
-- The interface has been designed with mobile-first in mind.
+2b - If in the other hand, we are dealing with a new user an onboarding modale should pop-up.
 
-- I also wanted to do something easy-to-understand without too much noise to ensure the targeted audience is not lost.
+3 - First, he is required to provide the name, description and logo of his organization.
+
+4 - Then he must list the first name, last name and email of his all the admins (regardless of the entity they will manage, if there are many).
+
+5 - After that he is asked if he needs to create entities (so each of his organization's entities gets its own personnalized dashboard).
+
+6a - If there are no entities in his organization, he is redirected to the home screen where he can access his dashboard and the default entity generated will have the name, description, logo and admins of the organization.
+
+6b - If there are many entities in his organization, he can list them and is l-only required to provide its name and list its admins (the description and logo can otherwise default to the organisation's).
+
+7 - He is then finally redirected to the home screen to access his dashboard.
+
+> disclaimer: instead of the home screen I have integrated the payload so you can visualize its structure and the data collected (also because of the lack of time and having other priorities in this test 🤷🏻‍♀️).
+
+### Inspirations:
+
+I started by spending some time on Dribbble and (of course) with a simple google search about onboarding for non-technical users.
+
+I've saved a few here in [this collection](https://dribbble.com/n475u/collections/5611591-Magma-Onboarding-Inspiration).
+
+But [Typeform](https://www.typeform.com/templates/t/client-onboarding-form-template/) and [ClearBrain](https://dribbble.com/shots/17907651-ClearBrain-s-first-log-in) were my main sources of inspiration.
 
 ## About the app
 

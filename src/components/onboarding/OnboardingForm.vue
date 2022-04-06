@@ -104,8 +104,11 @@
       <!-- STEP 3 : ENTITIES -->
 
       <base-box v-else-if="view === 'entities'" key="entities">
-        <p class="mb-5 text-center text-sm font-bold uppercase">
+        <p class="text-center text-sm font-bold uppercase">
           Are there different entities in your organization? 🏫
+        </p>
+        <p class="mb-5 text-center text-sm">
+          <span>Each entity gets its own personnalized dashboard.</span>
         </p>
 
         <div v-if="!entities.length">
