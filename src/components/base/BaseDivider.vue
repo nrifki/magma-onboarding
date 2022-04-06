@@ -3,5 +3,5 @@
      ************************************************************************* -->
 
 <template>
-  <hr class="bprder-gray-400 border-t border-dashed" />
+  <hr class="border-t border-dashed border-gray-400" />
 </template>
