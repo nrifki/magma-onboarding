@@ -105,7 +105,7 @@ But [Typeform](https://www.typeform.com/templates/t/client-onboarding-form-templ
 
 - Adding a chat so users who have need assistance can get assisted, even though our UX is supposed to think as if he doesn't need us (but UX is something we improve through trial and error, and a chat can at least allow us to get that feedback to do so);
 
-Not all users will reach out, so I recommend using hotjar or fullstory to spot where a user has trouble or how he behaves, which could give us some insights.
+- Not all users will reach out, so I recommend using hotjar or fullstory to spot where a user has trouble or how he behaves, which could give us some insights.
 
 - Use i18n to automatically display text in French or English (translation is added right inside the component) when detecting the user preferred language.
 
